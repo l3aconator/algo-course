@@ -1,6 +1,6 @@
 # Solutions / Tests for [Data Structures and Algorithms in JavaScript](https://egghead.io/courses/data-structures-and-algorithms-in-javascript) course
 
-Lessons are numbered by video, along with the algorithim it is teaching
+Lessons are numbered by video, along with the algorithm it is teaching
 
 Specs are build using jest
 
