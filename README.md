@@ -2,7 +2,7 @@
 
 Lessons are numbered by video, along with the algorithm it is teaching
 
-Specs are build using jest
+Specs are built using jest
 
 ```
 git clone https://github.com/l3aconator/algo-course.git
