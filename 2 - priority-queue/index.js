@@ -9,7 +9,9 @@ function createPriorityQueue() {
   return {
     enqueue(item, isHighPriority = false) {
       // eslint-disable-next-line
-      isHighPriority ? highPriorityQueue.enqueue(item) : lowPriorityQueue.enqueue(item);
+      isHighPriority
+        ? highPriorityQueue.enqueue(item)
+        : lowPriorityQueue.enqueue(item);
     },
     dequeue() {
       if (!highPriorityQueue.isEmpty()) {
@@ -29,7 +31,9 @@ function createPriorityQueue() {
       return highPriorityQueue.length + lowPriorityQueue.length;
     },
     isEmpty() {
-      return highPriorityQueue.isEmpty() && lowPriorityQueue.isEmpty();
+      return (
+        highPriorityQueue.isEmpty() && lowPriorityQueue.isEmpty()
+      );
     },
   };
 }
