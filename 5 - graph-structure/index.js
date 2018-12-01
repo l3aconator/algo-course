@@ -1,3 +1,5 @@
+import createQueue from '../1 - queue';
+
 // Graphs
 
 // a collection of nodes aka vertices
@@ -53,6 +55,55 @@ function createGraph(directed = false) {
           return result;
         })
         .join('\n');
+    },
+    // Breadth First Search
+    breadthFirstSearch(startingNodeKey, visitFn) {
+      const startingNode = this.getNode(startingNodeKey);
+
+      const visited = nodes.reduce((acc, node) => {
+        acc[node.key] = false;
+        return acc;
+      }, {});
+
+      const queue = createQueue();
+      queue.enqueue(startingNode);
+
+      while (!queue.isEmpty()) {
+        const currentNode = queue.dequeue();
+
+        if (!visited[currentNode.key]) {
+          visitFn(currentNode);
+          visited[currentNode.key] = true;
+        }
+
+        currentNode.neighbors.forEach((node) => {
+          if (!visited[node.key]) {
+            queue.enqueue(node);
+          }
+        });
+      }
+    },
+
+    // Depth First Search
+    depthFirstSearch(startingNodeKey, visitFn) {
+      const startingNode = this.getNode(startingNodeKey);
+      const visited = nodes.reduce((acc, node) => {
+        acc[node.key] = false;
+        return acc;
+      }, {});
+
+      function explore(node) {
+        if (visited[node.key]) return;
+
+        visitFn(node);
+        visited[node.key] = true;
+        // eslint-disable-next-line
+        node.neighbors.forEach(node => {
+          explore(node);
+        });
+      }
+
+      explore(startingNode);
     },
   };
 }
